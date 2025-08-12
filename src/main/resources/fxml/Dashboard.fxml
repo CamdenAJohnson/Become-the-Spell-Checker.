@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="org.spellingb.controller.DashboardController"
+      spacing="20" alignment="CENTER" style="-fx-padding: 30;">
+
+    <Label text="Dashboard" style="-fx-font-size: 24px;"/>
+
+    <Button text="Start Game" onAction="#handleStartGame" prefWidth="200"/>
+    <Button text="Logout" onAction="#handleLogout" prefWidth="200"/>
+
+</VBox>
