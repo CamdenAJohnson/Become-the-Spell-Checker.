@@ -1,5 +1,7 @@
 package org.spellingb.controller;
 
+import org.spellingb.util.PasswordHasher;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -26,7 +28,7 @@ public class HomeController {
     @FXML
     private void handleLogin() {
         String username = usernameField.getText();
-        String password = passwordField.getText();
+        String password = PasswordHasher.hash(passwordField.getText());
 
         try {
             User loggedInUser = UserDAO.login(username, password);
@@ -35,7 +37,6 @@ public class HomeController {
                 // Successful login → Go to Dashboard
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Dashboard.fxml"));
                 Scene scene = new Scene(loader.load());
-
                 Stage stage = (Stage) usernameField.getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("Dashboard");

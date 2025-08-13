@@ -15,30 +15,24 @@ public class UserDAO {
 
         try (Connection conn = DatabaseHelper.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getPasswordHash());
             stmt.executeUpdate();
         }
     }
 
-    public static User login(String username, String passwordPlainText) throws SQLException {
+    public static User login(String username, String hashedPassword) throws SQLException {
         String sql = "SELECT * FROM users WHERE username = ?";
         User user = null;
 
         try (Connection conn = DatabaseHelper.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-
             stmt.setString(1, username);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     String storedHash = rs.getString("password");
-
-                    // Hash the incoming password
-                    String incomingHash = PasswordHasher.hash(passwordPlainText);
-
                     // Compare hashes
-                    if (storedHash.equals(incomingHash)) {
+                    if (storedHash.equals(hashedPassword)) {
                         user = new User(
                                 rs.getInt("id"),
                                 rs.getString("username"),
@@ -48,7 +42,6 @@ public class UserDAO {
                 }
             }
         }
-
         return user; // if null → login failed; otherwise → login successful
     }
 
@@ -58,7 +51,6 @@ public class UserDAO {
 
         try (Connection conn = DatabaseHelper.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
@@ -70,7 +62,6 @@ public class UserDAO {
                 }
             }
         }
-
         return user;
     }
 }
