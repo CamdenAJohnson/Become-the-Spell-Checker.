@@ -30,8 +30,8 @@ public class RegisterController {
     @FXML
     private void handleRegister() {
         String username = usernameField.getText().trim();
-        String password = passwordField.getText();
-        String confirmPassword = confirmPasswordField.getText();
+        String password = PasswordHasher.hash(passwordField.getText());
+        String confirmPassword = PasswordHasher.hash(confirmPasswordField.getText());
 
         if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             messageLabel.setText("Please fill in all fields.");
@@ -44,8 +44,7 @@ public class RegisterController {
         }
 
         try {
-            String hashedPassword = PasswordHasher.hash(password);
-            User newUser = new User(-1 , username, hashedPassword);
+            User newUser = new User(-1 , username, password);
             UserDAO.insertUser(newUser);
 
             messageLabel.setText("Registration successful!");
@@ -54,7 +53,7 @@ public class RegisterController {
             System.out.println("User registered: " + username);
 
         } catch (SQLException e) {
-            messageLabel.setText("Username may already exist.");
+            messageLabel.setText("Username already exist.");
             e.printStackTrace();
         }
     }
