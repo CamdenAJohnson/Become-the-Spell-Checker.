@@ -9,7 +9,7 @@
 
     <Label text="Login" style="-fx-font-size: 24px;"/>
 
-    <TextField fx:id="usernameField" promptText="Username" />
+    <TextField fx:id="usernameField" promptText="Username" onAction="#handleInput" />
     <PasswordField fx:id="passwordField" promptText="Password" />
 
     <Button text="Login" onAction="#handleLogin" prefWidth="100"/>

@@ -11,7 +11,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         DatabaseHelper.getConnection(); // Connect to database at startup
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Home.fxml"));
         Scene scene = new Scene(loader.load());
         primaryStage.setScene(scene);
@@ -22,7 +21,7 @@ public class Main extends Application {
     @Override
     public void stop() throws Exception {
         super.stop();
-        DatabaseHelper.closeConnection(); // Close DB connection on app shutdown
+        DatabaseHelper.closeConnection(); // Close DB connection on application shutdown
     }
 
     public static void main(String[] args) {

@@ -1,5 +1,6 @@
 package org.spellingb.controller;
 
+import javafx.event.ActionEvent;
 import org.spellingb.util.PasswordHasher;
 
 import javafx.fxml.FXMLLoader;
@@ -24,6 +25,11 @@ public class HomeController {
 
     @FXML
     private Label messageLabel;
+
+    @FXML
+    private void handleInput(ActionEvent event) {
+        handleLogin();
+    }
 
     @FXML
     private void handleLogin() {
