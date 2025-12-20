@@ -13,6 +13,8 @@
         <maven.compiler.source>17</maven.compiler.source>  <!-- Java version -->
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <javafx.version>23.0.1</javafx.version>
+        <javafx.maven.plugin.version>0.0.8</javafx.maven.plugin.version>
         <exec.mainClass>org.spellingb.Main</exec.mainClass> <!-- You'll replace this -->
     </properties>
 
@@ -21,12 +23,12 @@
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
-            <version>20</version>
+            <version>${javafx.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
-            <version>20</version>
+            <version>${javafx.version}</version>
         </dependency>
 
         <!-- H2 Database -->
@@ -42,7 +44,7 @@
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.8</version>
+                <version>${javafx.maven.plugin.version}</version>
 
                 <configuration>
                     <mainClass>org.spellingb.Main</mainClass>
