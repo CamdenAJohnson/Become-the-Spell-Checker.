@@ -2,6 +2,7 @@ package org.spellingb.controller;
 
 import javafx.event.ActionEvent;
 import org.spellingb.util.PasswordHasher;
+import org.spellingb.util.StageManager;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -42,11 +43,7 @@ public class HomeController {
             if (loggedInUser != null) {
                 // Successful login → Go to Dashboard
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Dashboard.fxml"));
-                Scene scene = new Scene(loader.load());
-                Stage stage = (Stage) usernameField.getScene().getWindow();
-                stage.setScene(scene);
-                stage.setTitle("Dashboard");
-                stage.show();
+                StageManager.showScene(loader, "Dashboard");
             } else {
                 messageLabel.setText("Invalid username or password.");
                 messageLabel.setStyle("-fx-text-fill: red;");

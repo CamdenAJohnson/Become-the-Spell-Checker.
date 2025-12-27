@@ -1,5 +1,7 @@
 package org.spellingb.controller;
 
+import org.spellingb.util.StageManager;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -62,13 +64,7 @@ public class RegisterController {
     private void switchToLogin() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Home.fxml"));
-            Scene scene = new Scene(loader.load());
-
-            // Get the current window (Stage) and set the new scene
-            Stage stage = (Stage) usernameField.getScene().getWindow();
-            stage.setScene(scene);
-            stage.setTitle("Login");
-            stage.show();
+            StageManager.showScene(loader, "Login");
         } catch (Exception e) {
             e.printStackTrace();
         }

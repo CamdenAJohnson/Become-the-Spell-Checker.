@@ -14,6 +14,8 @@ import javafx.event.ActionEvent;
 
 import java.awt.*;
 
+import org.spellingb.util.WordLoader;
+
 public class GameController {
 
     @FXML
@@ -27,13 +29,15 @@ public class GameController {
 
     @FXML
     private void handleInput(ActionEvent event) {
-        System.out.println(event.toString());
-        System.out.println("The user has pressed enter.");
-
+        System.out.println(userInputField.getCharacters());
     }
 
     @FXML
     private void audioButtonPress(ActionEvent event) {
         System.out.println(event.toString());
+    }
+
+    private void checkSpelling(String word) {
+        System.out.println("Hello From GameController");
     }
 }

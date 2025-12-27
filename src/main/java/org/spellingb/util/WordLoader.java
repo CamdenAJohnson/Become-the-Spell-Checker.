@@ -14,8 +14,8 @@ public class WordLoader {
         List<Word> words = new ArrayList<>();
 
         try {
-            InputStream is = WordLoader.class.getResourceAsStream("/words/words.csv");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+            InputStream IS = WordLoader.class.getResourceAsStream("/words/words.csv");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(IS));
 
             String line;
             while ((line = reader.readLine()) != null) {

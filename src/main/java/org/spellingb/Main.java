@@ -6,16 +6,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import org.spellingb.util.StageManager;
+
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         DatabaseHelper.getConnection(); // Connect to database at startup
+
+        StageManager.initStageManager(primaryStage);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Home.fxml"));
-        Scene scene = new Scene(loader.load());
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Login");
-        primaryStage.show();
+        StageManager.showScene(loader, "Login");
     }
 
     @Override
