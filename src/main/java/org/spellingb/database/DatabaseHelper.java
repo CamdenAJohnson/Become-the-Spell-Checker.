@@ -6,16 +6,10 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 
 public class DatabaseHelper {
-
     private static final String DB_URL = "jdbc:h2:~/mydatabase";
     private static final String DB_USER = "sa";
     private static final String DB_PASSWORD = "";
-
     private static Connection connection;
-
-    private DatabaseHelper() {
-        // private constructor to prevent instantiation
-    }
 
     public static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {

@@ -34,11 +34,8 @@ public class HomeController {
 
     @FXML
     private void handleLogin() {
-        String username = usernameField.getText();
-        String password = PasswordHasher.hash(passwordField.getText());
-
         try {
-            User loggedInUser = UserDAO.login(username, password);
+            User loggedInUser = UserDAO.login(usernameField.getText(), PasswordHasher.hash(passwordField.getText()));
 
             if (loggedInUser != null) {
                 // Successful login → Go to Dashboard

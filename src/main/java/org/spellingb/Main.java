@@ -13,7 +13,6 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         DatabaseHelper.getConnection(); // Connect to database at startup
-
         StageManager.initStageManager(primaryStage);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Home.fxml"));
         StageManager.showScene(loader, "Login");
